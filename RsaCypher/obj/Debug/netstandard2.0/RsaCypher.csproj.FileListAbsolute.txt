@@ -1,0 +1,8 @@
+E:\Studying\Info Defence\Course work\RSA\RsaCypher\bin\Debug\netstandard2.0\RsaCypher.deps.json
+E:\Studying\Info Defence\Course work\RSA\RsaCypher\bin\Debug\netstandard2.0\RsaCypher.dll
+E:\Studying\Info Defence\Course work\RSA\RsaCypher\bin\Debug\netstandard2.0\RsaCypher.pdb
+E:\Studying\Info Defence\Course work\RSA\RsaCypher\obj\Debug\netstandard2.0\RsaCypher.csprojAssemblyReference.cache
+E:\Studying\Info Defence\Course work\RSA\RsaCypher\obj\Debug\netstandard2.0\RsaCypher.AssemblyInfoInputs.cache
+E:\Studying\Info Defence\Course work\RSA\RsaCypher\obj\Debug\netstandard2.0\RsaCypher.AssemblyInfo.cs
+E:\Studying\Info Defence\Course work\RSA\RsaCypher\obj\Debug\netstandard2.0\RsaCypher.dll
+E:\Studying\Info Defence\Course work\RSA\RsaCypher\obj\Debug\netstandard2.0\RsaCypher.pdb

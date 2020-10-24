@@ -1,0 +1,9 @@
+E:\Studying\Info Defence\Course work\RSA\RSA\obj\Debug\RSA_ConsoleExample.csprojAssemblyReference.cache
+E:\Studying\Info Defence\Course work\RSA\RSA\obj\Debug\RSA.exe
+E:\Studying\Info Defence\Course work\RSA\RSA\obj\Debug\RSA.pdb
+E:\Studying\Info Defence\Course work\RSA\RSA\bin\Debug\RSA.exe.config
+E:\Studying\Info Defence\Course work\RSA\RSA\bin\Debug\RSA.exe
+E:\Studying\Info Defence\Course work\RSA\RSA\bin\Debug\RSA.pdb
+E:\Studying\Info Defence\Course work\RSA\RSA\bin\Debug\RsaCypher.dll
+E:\Studying\Info Defence\Course work\RSA\RSA\bin\Debug\RsaCypher.pdb
+E:\Studying\Info Defence\Course work\RSA\RSA\obj\Debug\RSA_ConsoleExample.csproj.CopyComplete

@@ -1,0 +1,6 @@
+E:\Studying\Info Defence\Course work\RSA\RSA\bin\Debug\RSA.exe.config
+E:\Studying\Info Defence\Course work\RSA\RSA\bin\Debug\RSA.exe
+E:\Studying\Info Defence\Course work\RSA\RSA\bin\Debug\RSA.pdb
+E:\Studying\Info Defence\Course work\RSA\RSA\obj\Debug\RSA.csprojAssemblyReference.cache
+E:\Studying\Info Defence\Course work\RSA\RSA\obj\Debug\RSA.exe
+E:\Studying\Info Defence\Course work\RSA\RSA\obj\Debug\RSA.pdb

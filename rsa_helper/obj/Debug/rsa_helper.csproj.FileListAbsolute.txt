@@ -1,0 +1,13 @@
+E:\Studying\Info Defence\Course work\RSA\rsa_helper\bin\Debug\rsa_helper.exe.config
+E:\Studying\Info Defence\Course work\RSA\rsa_helper\bin\Debug\rsa_helper.exe
+E:\Studying\Info Defence\Course work\RSA\rsa_helper\bin\Debug\rsa_helper.pdb
+E:\Studying\Info Defence\Course work\RSA\rsa_helper\obj\Debug\rsa_helper.csprojAssemblyReference.cache
+E:\Studying\Info Defence\Course work\RSA\rsa_helper\obj\Debug\rsa_helper.Properties.Resources.resources
+E:\Studying\Info Defence\Course work\RSA\rsa_helper\obj\Debug\rsa_helper.csproj.GenerateResource.cache
+E:\Studying\Info Defence\Course work\RSA\rsa_helper\obj\Debug\rsa_helper.exe
+E:\Studying\Info Defence\Course work\RSA\rsa_helper\obj\Debug\rsa_helper.pdb
+E:\Studying\Info Defence\Course work\RSA\rsa_helper\bin\Debug\RsaCypher.dll
+E:\Studying\Info Defence\Course work\RSA\rsa_helper\bin\Debug\RsaCypher.pdb
+E:\Studying\Info Defence\Course work\RSA\rsa_helper\obj\Debug\rsa_helper.csproj.CopyComplete
+E:\Studying\Info Defence\Course work\RSA\rsa_helper\obj\Debug\rsa_helper.MainForm.resources
+E:\Studying\Info Defence\Course work\RSA\rsa_helper\obj\Debug\rsa_helper.HelpForm.resources
