@@ -6,28 +6,52 @@ namespace RsaCypher
 {
     public class RSA : ICypher
     {
+        /// <summary>
+        /// Neccessary constant required to init keys.
+        /// To init open key pair and closed key pair required  
+        /// initialising "P" and "Q" and then calling method "Init"
+        /// </summary>
         public int P { get; set; }
+        /// <summary>
+        /// Neccessary constant required to init keys.
+        /// To init open key pair and closed key pair required  
+        /// initialising "P" and "Q" and then calling method "Init"
+        /// </summary>
         public int Q { get; set; }
         public int M { get; set; }
-        public int N { get; set; }
-        public int D { get; set; }
-        public int E { get; set; }
+        /// <summary>
+        /// "e" in open key pair - [e; n] 
+        /// </summary>
+        public int FirstPartOfOpenKey { get; set; }
+        /// <summary>
+        /// "d" in closed key pair - [d; n]
+        /// </summary>
+        public int FirstPartOfClosedKey { get; set; }
+        /// <summary>
+        /// "n" in open key pair - [e; n] and in closed key pair [d; n]
+        /// </summary>
+        public int SecondPartOfKey { get; set; }
 
-        public RSA() { }
+        //  FirstPartOfClosedKey - e, FirstPartOfOpenKey - d
+        //  SecondPartOfKey - n
         //  [e; n] - open key pair, [d; n] - closed key pair
+        public RSA() { }
         public RSA(int p, int q)
         {
             Init(p, q);
         }
-        private void Init(int p, int q)
+        public void Init(int p, int q)
         {
             P = p;
             Q = q;
-
+            Init();
+        }
+        public void Init()
+        {
             M = (P - 1) * (Q - 1);
-            N = P * Q;
-            D = CalculateCoprime(M);
-            E = CalculateE(D, M);
+            SecondPartOfKey = P * Q;
+            FirstPartOfClosedKey = CalculateCoprime(M);
+            FirstPartOfOpenKey = CalculateE(FirstPartOfClosedKey, M);
         }
         private int CalculateCoprime(int number)
         {
@@ -84,8 +108,8 @@ namespace RsaCypher
             char encryptedSymbol;
             foreach (char symbol in message)
             {
-                BigInteger pow = BigInteger.Pow(symbol, E);
-                BigInteger.DivRem(pow, N, out BigInteger calculatinResult);
+                BigInteger pow = BigInteger.Pow(symbol, FirstPartOfOpenKey);
+                BigInteger.DivRem(pow, SecondPartOfKey, out BigInteger calculatinResult);
                 encryptedSymbol = (char)calculatinResult;
                 encryptedMessage.Append(encryptedSymbol);
             }
@@ -97,8 +121,8 @@ namespace RsaCypher
             char encryptedSymbol;
             foreach (char symbol in message)
             {
-                BigInteger pow = BigInteger.Pow(symbol, D);
-                BigInteger.DivRem(pow, N, out BigInteger calculatinResult);
+                BigInteger pow = BigInteger.Pow(symbol, FirstPartOfClosedKey);
+                BigInteger.DivRem(pow, SecondPartOfKey, out BigInteger calculatinResult);
                 encryptedSymbol = (char)calculatinResult;
                 encryptedMessage.Append(encryptedSymbol);
             }
@@ -118,6 +142,6 @@ namespace RsaCypher
             //  8191 и 524287 - числа Мерсена
             this.P.GetHashCode() * 8191 + this.Q.GetHashCode() * 524287;
         public override string ToString() =>
-            $"[{E}; {N}] - open key pair, [{D}; {N}] - closed key pair";
+            $"[{FirstPartOfOpenKey}; {SecondPartOfKey}] - open key pair, [{FirstPartOfClosedKey}; {SecondPartOfKey}] - closed key pair";
     }
 }

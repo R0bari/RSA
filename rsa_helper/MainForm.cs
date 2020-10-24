@@ -14,13 +14,13 @@ namespace rsa_helper
 
         private void HandleChangeFirstKey(object sender, EventArgs e)
         {
-            _rsaCypher.E = int.Parse(firstKeyTextBox.Text);
-            _rsaCypher.D = int.Parse(firstKeyTextBox.Text);
+            _rsaCypher.FirstPartOfOpenKey = int.Parse(firstKeyTextBox.Text);
+            _rsaCypher.FirstPartOfClosedKey = int.Parse(firstKeyTextBox.Text);
         }
 
         private void HandleChangeSecondKey(object sender, EventArgs e)
         {
-            _rsaCypher.N = int.Parse(secondKeyTextBox.Text);
+            _rsaCypher.SecondPartOfKey = int.Parse(secondKeyTextBox.Text);
         }
 
         private void HandleSwitchProcessType(object sender, EventArgs e)
