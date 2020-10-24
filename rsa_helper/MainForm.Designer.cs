@@ -107,11 +107,11 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(177, 137);
+            this.label4.Location = new System.Drawing.Point(135, 137);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(113, 13);
+            this.label4.Size = new System.Drawing.Size(155, 13);
             this.label4.TabIndex = 5;
-            this.label4.Text = "(Например, 53 и 299)";
+            this.label4.Text = "(Например, [53;299] и [5;299])";
             // 
             // radioEncrypt
             // 

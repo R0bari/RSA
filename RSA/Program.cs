@@ -22,7 +22,7 @@ namespace RSA_ConsoleExample
             string inputMessage, encryptedMessage, decryptedMessage;
 
             inputMessage = ReadFrom(inputPath);
-            int p = 13, q = 23;
+            int p = 31, q = 109;
 
             RSA rsaCypher = new RSA(p, q); 
             encryptedMessage = rsaCypher.Encrypt(inputMessage);
@@ -32,7 +32,7 @@ namespace RSA_ConsoleExample
             Console.WriteLine(rsaCypher.ToString());
             Console.WriteLine("Message to encrypt: {0}", inputMessage);
             Console.WriteLine("Encrypted message: {0}", encryptedMessage);
-            Console.WriteLine("Decrypted message: {0}\n____", decryptedMessage);
+            Console.WriteLine("Decrypted message: {0}\n", decryptedMessage);
 
             Console.ReadKey();
             return 0;

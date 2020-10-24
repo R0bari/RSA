@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using System;
+using System.Numerics;
 using System.Text;
 
 namespace RsaCypher
@@ -7,12 +8,10 @@ namespace RsaCypher
     {
         public int P { get; set; }
         public int Q { get; set; }
-
-        public int M { get; private set; }
+        public int M { get; set; }
         public int N { get; set; }
         public int D { get; set; }
         public int E { get; set; }
-
 
         public RSA() { }
         //  [e; n] - open key pair, [d; n] - closed key pair
@@ -65,9 +64,19 @@ namespace RsaCypher
         }
         private int CalculateE(int d, int m)
         {
-            int e = 0;
-            while (d * ++e % m != 1) ;
-            return e;
+            int[] cases = new int[10];
+            int e = 1, casesCount = 5, currentCaseNumber = 0;
+
+            while (currentCaseNumber < casesCount)
+            {
+                if (d * e % m == 1)
+                {
+                    cases[currentCaseNumber++] = e;
+                }
+                e++;
+            }
+            int randomIndex = new Random().Next(0, casesCount);
+            return cases[randomIndex];
         }
         public string Encrypt(string message)
         {

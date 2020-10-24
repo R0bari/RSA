@@ -34,6 +34,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -72,8 +73,8 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(36, 186);
-            this.label4.Margin = new System.Windows.Forms.Padding(3, 40, 3, 0);
+            this.label4.Location = new System.Drawing.Point(36, 171);
+            this.label4.Margin = new System.Windows.Forms.Padding(3, 25, 3, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(145, 16);
             this.label4.TabIndex = 4;
@@ -82,6 +83,7 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.SeaShell;
+            this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.Location = new System.Drawing.Point(267, 383);
@@ -95,18 +97,32 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(36, 242);
-            this.label5.Margin = new System.Windows.Forms.Padding(3, 40, 3, 0);
+            this.label5.Location = new System.Drawing.Point(36, 212);
+            this.label5.Margin = new System.Windows.Forms.Padding(3, 25, 3, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(227, 32);
             this.label5.TabIndex = 6;
             this.label5.Text = "Числа e и n – это открытый ключ, \r\nа числа d и n – это закрытый ключ";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.Location = new System.Drawing.Point(36, 269);
+            this.label6.Margin = new System.Windows.Forms.Padding(3, 25, 3, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(250, 80);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "Примеры:\r\n* [3703; 3379] - открытая пара ключей, \r\n   [7; 3379] - закрытая пара к" +
+    "лючей;\r\n* [53; 299] - открытая пара ключей, \r\n   [5;299] - закрытая пара ключей." +
+    "\r\n";
             // 
             // HelpForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 441);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
@@ -128,5 +144,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }
