@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Studying\\Info Defence\\Course work\\RSA\\RsaCypher\\RsaCypher.csproj": {}
+    "C:\\Users\\r0bar\\OneDrive\\Документы\\GitHub\\RSA\\RsaCypher\\RsaCypher.csproj": {}
   },
   "projects": {
-    "E:\\Studying\\Info Defence\\Course work\\RSA\\RsaCypher\\RsaCypher.csproj": {
+    "C:\\Users\\r0bar\\OneDrive\\Документы\\GitHub\\RSA\\RsaCypher\\RsaCypher.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Studying\\Info Defence\\Course work\\RSA\\RsaCypher\\RsaCypher.csproj",
+        "projectUniqueName": "C:\\Users\\r0bar\\OneDrive\\Документы\\GitHub\\RSA\\RsaCypher\\RsaCypher.csproj",
         "projectName": "RsaCypher",
-        "projectPath": "E:\\Studying\\Info Defence\\Course work\\RSA\\RsaCypher\\RsaCypher.csproj",
-        "packagesPath": "C:\\Users\\Eugene\\.nuget\\packages\\",
-        "outputPath": "E:\\Studying\\Info Defence\\Course work\\RSA\\RsaCypher\\obj\\",
+        "projectPath": "C:\\Users\\r0bar\\OneDrive\\Документы\\GitHub\\RSA\\RsaCypher\\RsaCypher.csproj",
+        "packagesPath": "C:\\Users\\r0bar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\r0bar\\OneDrive\\Документы\\GitHub\\RSA\\RsaCypher\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Eugene\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\r0bar\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -58,7 +55,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
         }
       }
     }

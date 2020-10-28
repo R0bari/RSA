@@ -14,13 +14,31 @@ namespace rsa_helper
 
         private void HandleChangeFirstKey(object sender, EventArgs e)
         {
+            if (firstKeyTextBox.Text == "")
+            {
+                DisableProcessButton();
+                return;
+            }
             _rsaCypher.FirstPartOfOpenKey = int.Parse(firstKeyTextBox.Text);
             _rsaCypher.FirstPartOfClosedKey = int.Parse(firstKeyTextBox.Text);
+            if (IsProcessFormValid())
+            {
+                EnableProcessButton();
+            }
         }
-
+       
         private void HandleChangeSecondKey(object sender, EventArgs e)
         {
+            if (secondKeyTextBox.Text == "")
+            {
+                DisableProcessButton();
+                return;
+            }
             _rsaCypher.SecondPartOfKey = int.Parse(secondKeyTextBox.Text);
+            if (IsProcessFormValid())
+            {
+                EnableProcessButton();
+            }
         }
 
         private void HandleSwitchProcessType(object sender, EventArgs e)
@@ -55,6 +73,50 @@ namespace rsa_helper
         {
             HelpForm helpForm = new HelpForm();
             helpForm.ShowDialog();
+        }
+
+        private void HandleChangeP(object sender, EventArgs e)
+        {
+            if (pTextBox.Text == "")
+            {
+                DisableGenerateButton();
+                return;
+            }
+            _rsaCypher.P = int.Parse(pTextBox.Text);
+            if (IsGenerateFormValid())
+            {
+                EnableGenerateButton();
+            }
+        }
+
+        private void HandleChangeQ(object sender, EventArgs e)
+        {
+            if (qTextBox.Text == "")
+            {
+                DisableGenerateButton();
+                return;
+            }
+            _rsaCypher.Q = int.Parse(qTextBox.Text);
+            if (IsGenerateFormValid())
+            {
+                EnableGenerateButton();
+            }
+        }
+        private void DisableProcessButton() => processButton.Enabled = false;
+        private void EnableProcessButton() => processButton.Enabled = true;
+        private void DisableGenerateButton() => generateButton.Enabled = false;
+        private void EnableGenerateButton() => generateButton.Enabled = true;
+
+        private bool IsProcessFormValid() => firstKeyTextBox.Text != "" && secondKeyTextBox.Text != "";
+        private bool IsGenerateFormValid() => pTextBox.Text != "" && qTextBox.Text != "";
+
+        private void HandleGenerateClick(object sender, EventArgs e)
+        {
+            _rsaCypher.Init();
+            mTextBox.Text = _rsaCypher.M.ToString();
+            nTextBox.Text = _rsaCypher.SecondPartOfKey.ToString();
+            eTextBox.Text = _rsaCypher.FirstPartOfOpenKey.ToString();
+            dTextBox.Text = _rsaCypher.FirstPartOfClosedKey.ToString();
         }
     }
 }

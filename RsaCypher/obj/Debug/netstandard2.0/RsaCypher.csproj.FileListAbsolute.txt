@@ -6,3 +6,12 @@ E:\Studying\Info Defence\Course work\RSA\RsaCypher\obj\Debug\netstandard2.0\RsaC
 E:\Studying\Info Defence\Course work\RSA\RsaCypher\obj\Debug\netstandard2.0\RsaCypher.AssemblyInfo.cs
 E:\Studying\Info Defence\Course work\RSA\RsaCypher\obj\Debug\netstandard2.0\RsaCypher.dll
 E:\Studying\Info Defence\Course work\RSA\RsaCypher\obj\Debug\netstandard2.0\RsaCypher.pdb
+C:\Users\r0bar\OneDrive\Документы\GitHub\RSA\RsaCypher\bin\Debug\netstandard2.0\RsaCypher.deps.json
+C:\Users\r0bar\OneDrive\Документы\GitHub\RSA\RsaCypher\bin\Debug\netstandard2.0\RsaCypher.dll
+C:\Users\r0bar\OneDrive\Документы\GitHub\RSA\RsaCypher\bin\Debug\netstandard2.0\RsaCypher.pdb
+C:\Users\r0bar\OneDrive\Документы\GitHub\RSA\RsaCypher\obj\Debug\netstandard2.0\RsaCypher.csprojAssemblyReference.cache
+C:\Users\r0bar\OneDrive\Документы\GitHub\RSA\RsaCypher\obj\Debug\netstandard2.0\RsaCypher.AssemblyInfoInputs.cache
+C:\Users\r0bar\OneDrive\Документы\GitHub\RSA\RsaCypher\obj\Debug\netstandard2.0\RsaCypher.AssemblyInfo.cs
+C:\Users\r0bar\OneDrive\Документы\GitHub\RSA\RsaCypher\obj\Debug\netstandard2.0\RsaCypher.csproj.CoreCompileInputs.cache
+C:\Users\r0bar\OneDrive\Документы\GitHub\RSA\RsaCypher\obj\Debug\netstandard2.0\RsaCypher.dll
+C:\Users\r0bar\OneDrive\Документы\GitHub\RSA\RsaCypher\obj\Debug\netstandard2.0\RsaCypher.pdb

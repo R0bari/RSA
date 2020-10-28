@@ -55,13 +55,20 @@ namespace RsaCypher
         }
         private int CalculateCoprime(int number)
         {
-            int coprimeNumber = 1;
-            do
-            {
-                ++coprimeNumber;
-            } while (!(IsPrimeNumber(coprimeNumber) && number % coprimeNumber != 0));
+            int[] cases = new int[10];
+            int coprimeNumber = 1, casesCount = 5, currentCaseNumber = 0;
 
-            return coprimeNumber;
+            while (currentCaseNumber < casesCount)
+            {
+                if (IsPrimeNumber(coprimeNumber) && !HaveCommonFactors(number, coprimeNumber))
+                {
+                    cases[currentCaseNumber] = coprimeNumber;
+                    ++currentCaseNumber;
+                }
+                ++coprimeNumber;
+            }
+            int randomIndex = new Random().Next(0, casesCount);
+            return cases[randomIndex];
 
             bool IsPrimeNumber(int n)
             {
@@ -85,6 +92,7 @@ namespace RsaCypher
 
                 return result;
             }
+            bool HaveCommonFactors(int first, int second) => first % second == 0 || second % first == 0;
         }
         private int CalculateE(int d, int m)
         {
