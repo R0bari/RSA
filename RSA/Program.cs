@@ -24,7 +24,7 @@ namespace RSA_ConsoleExample
             inputMessage = ReadFrom(inputPath);
             int p = 31, q = 109;
 
-            RSA rsaCypher = new RSA(p, q); 
+            RSA rsaCypher = new RSA(p, q);
             encryptedMessage = rsaCypher.Encrypt(inputMessage);
             decryptedMessage = rsaCypher.Decrypt(encryptedMessage);
             WriteTo(outputPath, encryptedMessage);

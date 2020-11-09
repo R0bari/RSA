@@ -61,7 +61,7 @@ namespace rsa_helper
             }
             if (radioEncrypt.Checked)
             {
-                output.Text = _rsaCypher.Encrypt(input.Text);
+                output.Text = _rsaCypher.Encrypt(input.Text.ToLower());
             }
             else
             {

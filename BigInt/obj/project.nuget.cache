@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "HSE7q3IeakCScyoYqDFU2hPP4t4E7Y8tMTh1lVkhEFa8l0N3T8+fMoeSbZUTMPNxIi//qsnF+TP0dOuY7b8xUg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\r0bar\\OneDrive\\Документы\\GitHub\\RSA\\BigInt\\CustomBigInt.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\r0bar\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\r0bar\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

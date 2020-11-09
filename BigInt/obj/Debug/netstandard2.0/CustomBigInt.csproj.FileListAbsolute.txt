@@ -1,0 +1,9 @@
+C:\Users\r0bar\OneDrive\Документы\GitHub\RSA\BigInt\bin\Debug\netstandard2.0\CustomBigInt.deps.json
+C:\Users\r0bar\OneDrive\Документы\GitHub\RSA\BigInt\bin\Debug\netstandard2.0\CustomBigInt.dll
+C:\Users\r0bar\OneDrive\Документы\GitHub\RSA\BigInt\bin\Debug\netstandard2.0\CustomBigInt.pdb
+C:\Users\r0bar\OneDrive\Документы\GitHub\RSA\BigInt\obj\Debug\netstandard2.0\CustomBigInt.AssemblyInfoInputs.cache
+C:\Users\r0bar\OneDrive\Документы\GitHub\RSA\BigInt\obj\Debug\netstandard2.0\CustomBigInt.AssemblyInfo.cs
+C:\Users\r0bar\OneDrive\Документы\GitHub\RSA\BigInt\obj\Debug\netstandard2.0\CustomBigInt.csproj.CoreCompileInputs.cache
+C:\Users\r0bar\OneDrive\Документы\GitHub\RSA\BigInt\obj\Debug\netstandard2.0\CustomBigInt.dll
+C:\Users\r0bar\OneDrive\Документы\GitHub\RSA\BigInt\obj\Debug\netstandard2.0\CustomBigInt.pdb
+C:\Users\r0bar\OneDrive\Документы\GitHub\RSA\BigInt\obj\Debug\netstandard2.0\CustomBigInt.csprojAssemblyReference.cache

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Numerics;
 using System.Text;
 
 namespace RsaCypher
@@ -68,7 +67,7 @@ namespace RsaCypher
                 ++coprimeNumber;
             }
             int randomIndex = new Random().Next(0, casesCount);
-            return cases[randomIndex];
+            return cases[0];
 
             bool IsPrimeNumber(int n)
             {
@@ -108,7 +107,7 @@ namespace RsaCypher
                 e++;
             }
             int randomIndex = new Random().Next(0, casesCount);
-            return cases[randomIndex];
+            return cases[0];
         }
         public string Encrypt(string message)
         {
@@ -116,9 +115,10 @@ namespace RsaCypher
             char encryptedSymbol;
             foreach (char symbol in message)
             {
-                BigInteger pow = BigInteger.Pow(symbol, FirstPartOfOpenKey);
-                BigInteger.DivRem(pow, SecondPartOfKey, out BigInteger calculatinResult);
-                encryptedSymbol = (char)calculatinResult;
+                BigInt poweredNumber = BigInt.Pow(new BigInt(symbol), FirstPartOfOpenKey);
+                BigInt resultNumber = poweredNumber % SecondPartOfKey;
+                encryptedSymbol = (char)int.Parse(resultNumber.ToString());
+
                 encryptedMessage.Append(encryptedSymbol);
             }
             return encryptedMessage.ToString();
@@ -129,9 +129,10 @@ namespace RsaCypher
             char encryptedSymbol;
             foreach (char symbol in message)
             {
-                BigInteger pow = BigInteger.Pow(symbol, FirstPartOfClosedKey);
-                BigInteger.DivRem(pow, SecondPartOfKey, out BigInteger calculatinResult);
-                encryptedSymbol = (char)calculatinResult;
+                BigInt poweredNumber = BigInt.Pow(new BigInt(symbol), FirstPartOfClosedKey);
+                BigInt resultNumber = poweredNumber % SecondPartOfKey;
+                encryptedSymbol = (char)int.Parse(resultNumber.ToString());
+
                 encryptedMessage.Append(encryptedSymbol);
             }
             return encryptedMessage.ToString();

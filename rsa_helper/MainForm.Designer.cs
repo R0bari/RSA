@@ -204,11 +204,11 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(134, 140);
+            this.label4.Location = new System.Drawing.Point(104, 140);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(155, 13);
+            this.label4.Size = new System.Drawing.Size(185, 13);
             this.label4.TabIndex = 19;
-            this.label4.Text = "(Например, [53;299] и [5;299])";
+            this.label4.Text = "(Например, [7477;3379] и [13;3379])\r\n";
             // 
             // label3
             // 
