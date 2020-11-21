@@ -19,20 +19,24 @@ namespace RSA_ConsoleExample
         }
         static int Main(string[] args)
         {
-            string inputMessage, encryptedMessage, decryptedMessage;
+            //string inputMessage, encryptedMessage, decryptedMessage;
 
-            inputMessage = ReadFrom(inputPath);
-            int p = 31, q = 109;
+            //inputMessage = ReadFrom(inputPath);
+            //int p = 31, q = 109;
 
-            RSA rsaCypher = new RSA(p, q);
-            encryptedMessage = rsaCypher.Encrypt(inputMessage);
-            decryptedMessage = rsaCypher.Decrypt(encryptedMessage);
-            WriteTo(outputPath, encryptedMessage);
+            //RSA rsaCypher = new RSA(p, q);
+            //encryptedMessage = rsaCypher.Encrypt(inputMessage);
+            //decryptedMessage = rsaCypher.Decrypt(encryptedMessage);
+            //WriteTo(outputPath, encryptedMessage);
 
-            Console.WriteLine(rsaCypher.ToString());
-            Console.WriteLine("Message to encrypt: {0}", inputMessage);
-            Console.WriteLine("Encrypted message: {0}", encryptedMessage);
-            Console.WriteLine("Decrypted message: {0}\n", decryptedMessage);
+            //Console.WriteLine(rsaCypher.ToString());
+            //Console.WriteLine("Message to encrypt: {0}", inputMessage);
+            //Console.WriteLine("Encrypted message: {0}", encryptedMessage);
+            //Console.WriteLine("Decrypted message: {0}\n", decryptedMessage);
+
+            BigInt number = new BigInt("82589933");
+            BigInt secondNumber = new BigInt("165179866");
+            Console.WriteLine("Are coprime - {0}", BigInt.AreCoprime(number, secondNumber));
 
             Console.ReadKey();
             return 0;

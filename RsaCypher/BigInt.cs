@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Numerics;
 
 /** Based on BigInteger.cs by ScottGarland from http://biginteger.codeplex.com/ */
 namespace RsaCypher
@@ -679,6 +680,54 @@ namespace RsaCypher
 		{
 			return (leftSide - 1);
 		}
+		#endregion
+
+		#region Primality Checks
+
+		/// <summary>
+		/// Checks whether the BigInteger primal or not.
+		/// <param name="numberToCheck"/></param>
+		/// </summary>
+		public static bool IsPrimal(BigInt numberToCheck)
+        {
+			int dividerCount = 0;
+            for (BigInt currentDivider = new BigInt(2); currentDivider <= numberToCheck / 2; ++currentDivider)
+            {
+				if (numberToCheck % currentDivider == 0)
+                {
+					++dividerCount;
+                }
+				if (dividerCount > 1)
+                {
+					return false;
+                }
+            }
+
+			return true;
+        }
+
+		/// <summary>
+		/// Checks whether two numbers are coprime or not.
+		/// </summary>
+		/// <param name="firstNumber"></param>
+		/// <param name="secondNumber"></param>
+		/// <returns></returns>
+		public static bool AreCoprime(BigInt firstNumber, BigInt secondNumber)
+        {
+			BigInt leastNumber = firstNumber > secondNumber 
+				? (BigInt)secondNumber.MemberwiseClone() 
+				: (BigInt)firstNumber.MemberwiseClone();
+			
+			for (BigInt currentDivider = leastNumber; currentDivider > 1; --currentDivider)
+            {
+				if (firstNumber % currentDivider == 0 && secondNumber % currentDivider == 0)
+                {
+					return false;
+                }
+            }
+			return true;
+        }
+
 		#endregion
 
 		#region Negate Operator Overload
