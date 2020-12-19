@@ -214,7 +214,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(95, 108);
+            this.label3.Location = new System.Drawing.Point(68, 102);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(124, 24);
             this.label3.TabIndex = 18;
@@ -224,7 +224,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(95, 75);
+            this.label2.Location = new System.Drawing.Point(68, 69);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(128, 24);
             this.label2.TabIndex = 17;
@@ -233,10 +233,10 @@
             // secondKeyTextBox
             // 
             this.secondKeyTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.secondKeyTextBox.Location = new System.Drawing.Point(233, 108);
-            this.secondKeyTextBox.Mask = "00000";
+            this.secondKeyTextBox.Location = new System.Drawing.Point(206, 102);
+            this.secondKeyTextBox.Mask = "000000000000000000000000000";
             this.secondKeyTextBox.Name = "secondKeyTextBox";
-            this.secondKeyTextBox.Size = new System.Drawing.Size(56, 29);
+            this.secondKeyTextBox.Size = new System.Drawing.Size(104, 29);
             this.secondKeyTextBox.TabIndex = 2;
             this.secondKeyTextBox.ValidatingType = typeof(int);
             this.secondKeyTextBox.TextChanged += new System.EventHandler(this.HandleChangeSecondKey);
@@ -244,10 +244,10 @@
             // firstKeyTextBox
             // 
             this.firstKeyTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.firstKeyTextBox.Location = new System.Drawing.Point(233, 72);
-            this.firstKeyTextBox.Mask = "00000";
+            this.firstKeyTextBox.Location = new System.Drawing.Point(206, 66);
+            this.firstKeyTextBox.Mask = "000000000000000000000000000";
             this.firstKeyTextBox.Name = "firstKeyTextBox";
-            this.firstKeyTextBox.Size = new System.Drawing.Size(56, 29);
+            this.firstKeyTextBox.Size = new System.Drawing.Size(104, 29);
             this.firstKeyTextBox.TabIndex = 1;
             this.firstKeyTextBox.ValidatingType = typeof(int);
             this.firstKeyTextBox.TextChanged += new System.EventHandler(this.HandleChangeFirstKey);
@@ -400,10 +400,10 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label11.Location = new System.Drawing.Point(109, 96);
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label11.Location = new System.Drawing.Point(127, 96);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(259, 80);
+            this.label11.Size = new System.Drawing.Size(214, 64);
             this.label11.TabIndex = 23;
             this.label11.Text = "1. m = (p -1) * (q - 1)\r\n2. n = p * q\r\n3. e - такое, что (e ⋅ d) mod (m) = 1\r\n4. " +
     "d - Взаимнопростое с m\r\n";
@@ -431,10 +431,10 @@
             // qTextBox
             // 
             this.qTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.qTextBox.Location = new System.Drawing.Point(38, 131);
-            this.qTextBox.Mask = "00000";
+            this.qTextBox.Location = new System.Drawing.Point(33, 129);
+            this.qTextBox.Mask = "00000000000000000000000000000000";
             this.qTextBox.Name = "qTextBox";
-            this.qTextBox.Size = new System.Drawing.Size(56, 29);
+            this.qTextBox.Size = new System.Drawing.Size(88, 29);
             this.qTextBox.TabIndex = 20;
             this.qTextBox.ValidatingType = typeof(int);
             this.qTextBox.TextChanged += new System.EventHandler(this.HandleChangeQ);
@@ -442,10 +442,10 @@
             // pTextBox
             // 
             this.pTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.pTextBox.Location = new System.Drawing.Point(38, 96);
-            this.pTextBox.Mask = "00000";
+            this.pTextBox.Location = new System.Drawing.Point(33, 94);
+            this.pTextBox.Mask = "00000000000000000000000000000000";
             this.pTextBox.Name = "pTextBox";
-            this.pTextBox.Size = new System.Drawing.Size(56, 29);
+            this.pTextBox.Size = new System.Drawing.Size(88, 29);
             this.pTextBox.TabIndex = 19;
             this.pTextBox.ValidatingType = typeof(int);
             this.pTextBox.TextChanged += new System.EventHandler(this.HandleChangeP);

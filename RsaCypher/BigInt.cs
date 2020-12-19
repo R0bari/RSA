@@ -1135,7 +1135,6 @@ namespace RsaCypher
 				throw new ArgumentOutOfRangeException ("power", "Currently negative exponents are not supported");
 			}
 
-
 			BigInt result = 1;
 			while (power != 0) {
 

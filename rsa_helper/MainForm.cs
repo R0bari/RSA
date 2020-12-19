@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Numerics;
 using System.Windows.Forms;
 using RsaCypher;
 
@@ -19,8 +20,8 @@ namespace rsa_helper
                 DisableProcessButton();
                 return;
             }
-            _rsaCypher.FirstPartOfOpenKey = int.Parse(firstKeyTextBox.Text);
-            _rsaCypher.FirstPartOfClosedKey = int.Parse(firstKeyTextBox.Text);
+            _rsaCypher.FirstPartOpenKey = BigInteger.Parse(firstKeyTextBox.Text);
+            _rsaCypher.FirstPartClosedKey = BigInteger.Parse(firstKeyTextBox.Text);
             if (IsProcessFormValid())
             {
                 EnableProcessButton();
@@ -34,7 +35,7 @@ namespace rsa_helper
                 DisableProcessButton();
                 return;
             }
-            _rsaCypher.SecondPartOfKey = int.Parse(secondKeyTextBox.Text);
+            _rsaCypher.SecondPartKey = BigInteger.Parse(secondKeyTextBox.Text);
             if (IsProcessFormValid())
             {
                 EnableProcessButton();
@@ -61,7 +62,7 @@ namespace rsa_helper
             }
             if (radioEncrypt.Checked)
             {
-                output.Text = _rsaCypher.Encrypt(input.Text.ToLower());
+                output.Text = _rsaCypher.Encrypt(input.Text);
             }
             else
             {
@@ -82,7 +83,7 @@ namespace rsa_helper
                 DisableGenerateButton();
                 return;
             }
-            _rsaCypher.P = int.Parse(pTextBox.Text);
+            _rsaCypher.P = BigInteger.Parse(pTextBox.Text);
             if (IsGenerateFormValid())
             {
                 EnableGenerateButton();
@@ -96,7 +97,7 @@ namespace rsa_helper
                 DisableGenerateButton();
                 return;
             }
-            _rsaCypher.Q = int.Parse(qTextBox.Text);
+            _rsaCypher.Q = BigInteger.Parse(qTextBox.Text);
             if (IsGenerateFormValid())
             {
                 EnableGenerateButton();
@@ -114,9 +115,9 @@ namespace rsa_helper
         {
             _rsaCypher.Init();
             mTextBox.Text = _rsaCypher.M.ToString();
-            nTextBox.Text = _rsaCypher.SecondPartOfKey.ToString();
-            eTextBox.Text = _rsaCypher.FirstPartOfOpenKey.ToString();
-            dTextBox.Text = _rsaCypher.FirstPartOfClosedKey.ToString();
+            nTextBox.Text = _rsaCypher.SecondPartKey.ToString();
+            eTextBox.Text = _rsaCypher.FirstPartOpenKey.ToString();
+            dTextBox.Text = _rsaCypher.FirstPartClosedKey.ToString();
         }
     }
 }

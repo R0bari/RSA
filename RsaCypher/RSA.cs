@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Numerics;
 using System.Text;
+using RsaCypher.BitSequenceLib;
 
 namespace RsaCypher
 {
@@ -10,36 +13,36 @@ namespace RsaCypher
         /// To init open key pair and closed key pair required  
         /// initialising "P" and "Q" and then calling method "Init"
         /// </summary>
-        public int P { get; set; }
+        public BigInteger P { get; set; }
         /// <summary>
         /// Neccessary constant required to init keys.
         /// To init open key pair and closed key pair required  
         /// initialising "P" and "Q" and then calling method "Init"
         /// </summary>
-        public int Q { get; set; }
-        public int M { get; set; }
+        public BigInteger Q { get; set; }
+        public BigInteger M { get; set; }
         /// <summary>
         /// "e" in open key pair - [e; n] 
         /// </summary>
-        public int FirstPartOfOpenKey { get; set; }
+        public BigInteger FirstPartOpenKey { get; set; }
         /// <summary>
         /// "d" in closed key pair - [d; n]
         /// </summary>
-        public int FirstPartOfClosedKey { get; set; }
+        public BigInteger FirstPartClosedKey { get; set; }
         /// <summary>
         /// "n" in open key pair - [e; n] and in closed key pair [d; n]
         /// </summary>
-        public int SecondPartOfKey { get; set; }
+        public BigInteger SecondPartKey { get; set; }
 
         //  FirstPartOfClosedKey - e, FirstPartOfOpenKey - d
         //  SecondPartOfKey - n
         //  [e; n] - open key pair, [d; n] - closed key pair
         public RSA() { }
-        public RSA(int p, int q)
+        public RSA(BigInteger p, BigInteger q)
         {
             Init(p, q);
         }
-        public void Init(int p, int q)
+        public void Init(BigInteger p, BigInteger q)
         {
             P = p;
             Q = q;
@@ -48,96 +51,106 @@ namespace RsaCypher
         public void Init()
         {
             M = (P - 1) * (Q - 1);
-            SecondPartOfKey = P * Q;
-            FirstPartOfClosedKey = CalculateCoprime(M);
-            FirstPartOfOpenKey = CalculateE(FirstPartOfClosedKey, M);
+            SecondPartKey = P * Q;
+            FirstPartOpenKey = CalculateE(M);
+            FirstPartClosedKey = CalculateD(FirstPartOpenKey, M);
         }
-        private int CalculateCoprime(int number)
+        private BigInteger CalculateE(BigInteger m)
         {
-            int[] cases = new int[10];
-            int coprimeNumber = 1, casesCount = 5, currentCaseNumber = 0;
-
-            while (currentCaseNumber < casesCount)
+            int e = 2;
+            while (m % e == 0)
             {
-                if (IsPrimeNumber(coprimeNumber) && !HaveCommonFactors(number, coprimeNumber))
+                do
                 {
-                    cases[currentCaseNumber] = coprimeNumber;
-                    ++currentCaseNumber;
-                }
-                ++coprimeNumber;
+                    ++e;
+                } while (!isPrime(e));
             }
-            int randomIndex = new Random().Next(0, casesCount);
-            return cases[0];
 
-            bool IsPrimeNumber(int n)
+            bool isPrime(int number)
             {
-                var result = true;
-
-                if (n > 1)
+                for (int i = 2; i < Math.Sqrt(number); ++i)
                 {
-                    for (var i = 2u; i < n; i++)
+                    if (number % i == 0)
                     {
-                        if (n % i == 0)
-                        {
-                            result = false;
-                            break;
-                        }
+                        return false;
                     }
                 }
-                else
-                {
-                    result = false;
-                }
-
-                return result;
+                return true;
             }
-            bool HaveCommonFactors(int first, int second) => first % second == 0 || second % first == 0;
+
+            return new BigInteger(e);
         }
-        private int CalculateE(int d, int m)
+        private BigInteger CalculateD(BigInteger e, BigInteger m)
         {
-            int[] cases = new int[10];
-            int e = 1, casesCount = 5, currentCaseNumber = 0;
+            BigInteger d = m / e + 1;
+            BigInteger de = d * e;
+            BigInteger _m = new BigInteger(m.ToByteArray());
 
-            while (currentCaseNumber < casesCount)
+            while (de - _m != 1)
             {
-                if (d * e % m == 1)
-                {
-                    cases[currentCaseNumber++] = e;
-                }
-                e++;
+                _m += m;
+                de += e * ((_m - de) / e + 1);
             }
-            int randomIndex = new Random().Next(0, casesCount);
-            return cases[0];
+            d = de / e;
+            return d;
         }
         public string Encrypt(string message)
         {
             StringBuilder encryptedMessage = new StringBuilder();
-            char encryptedSymbol;
+
+            while (message.Length % 8 != 0)
+            {
+                message += " ";
+            }
+
             foreach (char symbol in message)
             {
-                BigInt poweredNumber = BigInt.Pow(new BigInt(symbol), FirstPartOfOpenKey);
-                BigInt resultNumber = poweredNumber % SecondPartOfKey;
-                encryptedSymbol = (char)int.Parse(resultNumber.ToString());
+                BigInteger resultNumber = BigInteger.ModPow(new BigInteger(symbol), FirstPartOpenKey, SecondPartKey);
 
-                encryptedMessage.Append(encryptedSymbol);
+                string zeros = "";
+                for (int i = 0; i < 16 - resultNumber.ToString().Length; ++i)
+                {
+                    zeros += "0";
+                }
+                encryptedMessage.Append(zeros + resultNumber.ToString() + " ");
             }
             return encryptedMessage.ToString();
         }
         public string Decrypt(string message)
         {
             StringBuilder encryptedMessage = new StringBuilder();
-            char encryptedSymbol;
-            foreach (char symbol in message)
+            string[] messageBlocks = message.Trim().Split(' ');
+            List<BigInteger> blocks = new List<BigInteger>();
+            List<BitSequence> eightBitSequences = new List<BitSequence>();
+
+            foreach (string block in messageBlocks)
             {
-                BigInt poweredNumber = BigInt.Pow(new BigInt(symbol), FirstPartOfClosedKey);
-                BigInt resultNumber = poweredNumber % SecondPartOfKey;
-                encryptedSymbol = (char)int.Parse(resultNumber.ToString());
+                blocks.Add(BigInteger.Parse(block));
+                BigInteger resultNumber = BigInteger.ModPow(blocks[blocks.Count - 1], FirstPartClosedKey, SecondPartKey);
+                char encryptedSymbol = (char)int.Parse(resultNumber.ToString());
 
                 encryptedMessage.Append(encryptedSymbol);
             }
             return encryptedMessage.ToString();
         }
+        public List<BitSequence> CutToBitSequences(string message, int bitSequenceSize)
+        {
+            StringBuilder msg = new StringBuilder(message);
+            List<BitSequence> bitSequences = new List<BitSequence>();
+            BitSequence messageBits = new BitSequence(message);
+            while (msg.Length % (bitSequenceSize / 8) != 0)
+            {
+                msg.Append(' ');
+            }
+            for (int i = 0; i < msg.Length; i += bitSequenceSize / 8)
+            {
+                bitSequences.Add(messageBits.SubSequence(i, i + bitSequenceSize < messageBits.Bits.Count
+                    ? i + bitSequenceSize
+                    : messageBits.Bits.Count - 1));
+            }
 
+            return bitSequences;
+        }
         public override bool Equals(object obj)
         {
             if (!(obj is RSA))
@@ -151,6 +164,6 @@ namespace RsaCypher
             //  8191 и 524287 - числа Мерсена
             this.P.GetHashCode() * 8191 + this.Q.GetHashCode() * 524287;
         public override string ToString() =>
-            $"[{FirstPartOfOpenKey}; {SecondPartOfKey}] - open key pair, [{FirstPartOfClosedKey}; {SecondPartOfKey}] - closed key pair";
+            $"[{FirstPartOpenKey}; {SecondPartKey}] - open key pair, [{FirstPartClosedKey}; {SecondPartKey}] - closed key pair";
     }
 }
