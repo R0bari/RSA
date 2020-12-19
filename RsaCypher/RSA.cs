@@ -172,24 +172,6 @@ namespace RsaCypher
             }
             return decryptedMessage.ToString();
         }
-        public List<BitSequence> CutToBitSequences(string message, int bitSequenceSize)
-        {
-            StringBuilder msg = new StringBuilder(message);
-            List<BitSequence> bitSequences = new List<BitSequence>();
-            BitSequence messageBits = new BitSequence(message);
-            while (msg.Length % (bitSequenceSize / 8) != 0)
-            {
-                msg.Append(' ');
-            }
-            for (int i = 0; i < msg.Length; i += bitSequenceSize / 8)
-            {
-                bitSequences.Add(messageBits.SubSequence(i, i + bitSequenceSize < messageBits.Bits.Count
-                    ? i + bitSequenceSize
-                    : messageBits.Bits.Count - 1));
-            }
-
-            return bitSequences;
-        }
         public override bool Equals(object obj)
         {
             if (!(obj is RSA))
