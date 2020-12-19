@@ -29,6 +29,7 @@ namespace rsa_helper
             catch
             {
                 MessageBox.Show("Wrong format!");
+                firstKeyTextBox.Clear();
             }
             if (IsProcessFormValid())
             {
@@ -47,12 +48,14 @@ namespace rsa_helper
             try
             {
                 _rsaCypher.SecondPartKey = BigInteger.Parse(secondKeyTextBox.Text);
-                ChangeMaxBlockSize((int)Math.Sqrt(new BitSequence(_rsaCypher.SecondPartKey).Bits.Count) - 1);
             }
             catch
             {
                 MessageBox.Show("Wrong format!");
+                secondKeyTextBox.Clear();
             }
+            ChangeMaxBlockSize((int)Math.Sqrt(new BitSequence(_rsaCypher.SecondPartKey).Bits.Count) - 1);
+
             if (IsProcessFormValid())
             {
                 EnableProcessButton();
@@ -107,6 +110,7 @@ namespace rsa_helper
             catch
             {
                 MessageBox.Show("Wrong format!");
+                pTextBox.Clear();
             }
             if (IsGenerateFormValid())
             {
@@ -128,6 +132,7 @@ namespace rsa_helper
             catch
             {
                 MessageBox.Show("Wrong format!");
+                qTextBox.Clear();
             }
             if (IsGenerateFormValid())
             {
