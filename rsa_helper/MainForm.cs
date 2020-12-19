@@ -62,11 +62,11 @@ namespace rsa_helper
             }
             if (radioEncrypt.Checked)
             {
-                output.Text = _rsaCypher.Encrypt(input.Text);
+                output.Text = _rsaCypher.EncyptByBlocks(input.Text, 8);
             }
             else
             {
-                output.Text = _rsaCypher.Decrypt(input.Text);
+                output.Text = _rsaCypher.DecryptByBlocks(input.Text);
             }
         }
 

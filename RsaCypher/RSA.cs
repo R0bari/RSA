@@ -116,6 +116,10 @@ namespace RsaCypher
             }
             return encryptedMessage.ToString();
         }
+        public BigInteger Encrypt(BigInteger numberToEncrypt)
+        {
+            return BigInteger.ModPow(numberToEncrypt, FirstPartOpenKey, SecondPartKey);
+        }
         public string Decrypt(string message)
         {
             StringBuilder encryptedMessage = new StringBuilder();
@@ -132,6 +136,41 @@ namespace RsaCypher
                 encryptedMessage.Append(encryptedSymbol);
             }
             return encryptedMessage.ToString();
+        }
+        public BigInteger Decrypt(BigInteger numberToDecrypt)
+        {
+            return BigInteger.ModPow(numberToDecrypt, FirstPartClosedKey, SecondPartKey);
+        }
+        public string EncyptByBlocks(string message, int blockSizeInSymbols)
+        {
+            StringBuilder encryptedMessage = new StringBuilder();
+            List<BitSequence> blocks = new List<BitSequence>();
+            while (message.Length % blockSizeInSymbols != 0)
+            {
+                message += " ";
+            }
+            for (int i = 0; i < message.Length; i += blockSizeInSymbols)
+            {
+                blocks.Add(new BitSequence(message.Substring(i, blockSizeInSymbols)));
+                BigInteger blockMessage = blocks[blocks.Count - 1].ToBigInteger();
+                BigInteger encryptedBlock = this.Encrypt(blockMessage);
+                encryptedMessage.Append(encryptedBlock.ToString() + " ");
+            }
+            return encryptedMessage.ToString();
+        }
+        public string DecryptByBlocks(string message)
+        {
+            StringBuilder decryptedMessage = new StringBuilder();
+            List<BigInteger> encryptedBigNumbers = new List<BigInteger>();
+            string[] encryptedBlocks = message.Trim().Split(' ');
+            foreach (string block in encryptedBlocks)
+            {
+                encryptedBigNumbers.Add(BigInteger.Parse(block));
+                BigInteger decryptedBigNumber = this.Decrypt(encryptedBigNumbers[encryptedBigNumbers.Count - 1]);
+                BitSequence decryptedBitSequence = new BitSequence(decryptedBigNumber);
+                decryptedMessage.Append(decryptedBitSequence.ToString());
+            }
+            return decryptedMessage.ToString();
         }
         public List<BitSequence> CutToBitSequences(string message, int bitSequenceSize)
         {
