@@ -2,6 +2,7 @@
 using System.Numerics;
 using System.Windows.Forms;
 using RsaCypher;
+using RsaCypher.BitSequenceLib;
 
 namespace rsa_helper
 {
@@ -20,8 +21,15 @@ namespace rsa_helper
                 DisableProcessButton();
                 return;
             }
-            _rsaCypher.FirstPartOpenKey = BigInteger.Parse(firstKeyTextBox.Text);
-            _rsaCypher.FirstPartClosedKey = BigInteger.Parse(firstKeyTextBox.Text);
+            try
+            {
+                _rsaCypher.FirstPartOpenKey = BigInteger.Parse(firstKeyTextBox.Text);
+                _rsaCypher.FirstPartClosedKey = BigInteger.Parse(firstKeyTextBox.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Wrong format!");
+            }
             if (IsProcessFormValid())
             {
                 EnableProcessButton();
@@ -32,10 +40,19 @@ namespace rsa_helper
         {
             if (secondKeyTextBox.Text == "")
             {
+                ChangeMaxBlockSize(1);
                 DisableProcessButton();
                 return;
             }
-            _rsaCypher.SecondPartKey = BigInteger.Parse(secondKeyTextBox.Text);
+            try
+            {
+                _rsaCypher.SecondPartKey = BigInteger.Parse(secondKeyTextBox.Text);
+                ChangeMaxBlockSize((int)Math.Sqrt(new BitSequence(_rsaCypher.SecondPartKey).Bits.Count) - 1);
+            }
+            catch
+            {
+                MessageBox.Show("Wrong format!");
+            }
             if (IsProcessFormValid())
             {
                 EnableProcessButton();
@@ -62,7 +79,7 @@ namespace rsa_helper
             }
             if (radioEncrypt.Checked)
             {
-                output.Text = _rsaCypher.EncyptByBlocks(input.Text, 8);
+                output.Text = _rsaCypher.EncyptByBlocks(input.Text, (int)maxBlockSize.Value);
             }
             else
             {
@@ -83,7 +100,14 @@ namespace rsa_helper
                 DisableGenerateButton();
                 return;
             }
-            _rsaCypher.P = BigInteger.Parse(pTextBox.Text);
+            try
+            {
+                _rsaCypher.P = BigInteger.Parse(pTextBox.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Wrong format!");
+            }
             if (IsGenerateFormValid())
             {
                 EnableGenerateButton();
@@ -97,7 +121,14 @@ namespace rsa_helper
                 DisableGenerateButton();
                 return;
             }
-            _rsaCypher.Q = BigInteger.Parse(qTextBox.Text);
+            try
+            {
+                _rsaCypher.Q = BigInteger.Parse(qTextBox.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Wrong format!");
+            }
             if (IsGenerateFormValid())
             {
                 EnableGenerateButton();
@@ -118,6 +149,13 @@ namespace rsa_helper
             nTextBox.Text = _rsaCypher.SecondPartKey.ToString();
             eTextBox.Text = _rsaCypher.FirstPartOpenKey.ToString();
             dTextBox.Text = _rsaCypher.FirstPartClosedKey.ToString();
+        }
+
+        private void ChangeMaxBlockSize(int maximum)
+        {
+            maxBlockSizeInfo.Text = "Максимальный размер блока: " + maximum;
+            maxBlockSize.Maximum = maximum;
+            maxBlockSize.Value = maximum;
         }
     }
 }

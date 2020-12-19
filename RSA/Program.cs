@@ -39,7 +39,7 @@ namespace RSA_ConsoleExample
             }
             return encryptedMessage.ToString();
         }
-        static string DecryptByBlocks(RSA rsaCypher, string message, int blockSizeInSymbols)
+        static string DecryptByBlocks(RSA rsaCypher, string message)
         {
             StringBuilder decryptedMessage = new StringBuilder();
             List<BigInteger> encryptedBigNumbers = new List<BigInteger>();
@@ -66,7 +66,7 @@ namespace RSA_ConsoleExample
             Console.WriteLine(encryptedMessage);
 
             Console.WriteLine("DECRYPTING...");
-            decryptedMessage = DecryptByBlocks(rsaCypher, encryptedMessage, 8);
+            decryptedMessage = DecryptByBlocks(rsaCypher, encryptedMessage);
             Console.WriteLine(decryptedMessage);
 
             Console.ReadKey();

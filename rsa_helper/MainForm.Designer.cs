@@ -33,6 +33,9 @@
             this.help = new System.Windows.Forms.ToolStripMenuItem();
             this.tabs = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.maxBlockSize = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
+            this.maxBlockSizeInfo = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.processButton = new System.Windows.Forms.Button();
@@ -67,6 +70,7 @@
             this.menuStrip1.SuspendLayout();
             this.tabs.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.maxBlockSize)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -100,12 +104,15 @@
             this.tabs.Location = new System.Drawing.Point(0, 0);
             this.tabs.Name = "tabs";
             this.tabs.SelectedIndex = 0;
-            this.tabs.Size = new System.Drawing.Size(665, 441);
+            this.tabs.Size = new System.Drawing.Size(665, 457);
             this.tabs.TabIndex = 12;
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.Moccasin;
+            this.tabPage1.Controls.Add(this.maxBlockSize);
+            this.tabPage1.Controls.Add(this.label4);
+            this.tabPage1.Controls.Add(this.maxBlockSizeInfo);
             this.tabPage1.Controls.Add(this.label6);
             this.tabPage1.Controls.Add(this.label5);
             this.tabPage1.Controls.Add(this.processButton);
@@ -122,14 +129,46 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(657, 415);
+            this.tabPage1.Size = new System.Drawing.Size(657, 431);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Шифр";
+            // 
+            // maxBlockSize
+            // 
+            this.maxBlockSize.Location = new System.Drawing.Point(378, 161);
+            this.maxBlockSize.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.maxBlockSize.Name = "maxBlockSize";
+            this.maxBlockSize.Size = new System.Drawing.Size(120, 20);
+            this.maxBlockSize.TabIndex = 27;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(175, 161);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(197, 20);
+            this.label4.TabIndex = 26;
+            this.label4.Text = "Выберите размер блока:";
+            // 
+            // maxBlockSizeInfo
+            // 
+            this.maxBlockSizeInfo.AutoSize = true;
+            this.maxBlockSizeInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.maxBlockSizeInfo.Location = new System.Drawing.Point(175, 138);
+            this.maxBlockSizeInfo.Name = "maxBlockSizeInfo";
+            this.maxBlockSizeInfo.Size = new System.Drawing.Size(232, 20);
+            this.maxBlockSizeInfo.TabIndex = 25;
+            this.maxBlockSizeInfo.Text = "Максимальный размер блока";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(367, 181);
+            this.label6.Location = new System.Drawing.Point(367, 187);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(59, 13);
             this.label6.TabIndex = 24;
@@ -138,7 +177,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(35, 181);
+            this.label5.Location = new System.Drawing.Point(35, 187);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(89, 13);
             this.label5.TabIndex = 23;
@@ -150,7 +189,7 @@
             this.processButton.Enabled = false;
             this.processButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.processButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.processButton.Location = new System.Drawing.Point(38, 357);
+            this.processButton.Location = new System.Drawing.Point(38, 363);
             this.processButton.Name = "processButton";
             this.processButton.Size = new System.Drawing.Size(579, 38);
             this.processButton.TabIndex = 8;
@@ -160,7 +199,7 @@
             // 
             // input
             // 
-            this.input.Location = new System.Drawing.Point(38, 197);
+            this.input.Location = new System.Drawing.Point(38, 203);
             this.input.Multiline = true;
             this.input.Name = "input";
             this.input.Size = new System.Drawing.Size(271, 154);
@@ -168,7 +207,7 @@
             // 
             // output
             // 
-            this.output.Location = new System.Drawing.Point(370, 197);
+            this.output.Location = new System.Drawing.Point(370, 203);
             this.output.Multiline = true;
             this.output.Name = "output";
             this.output.ReadOnly = true;
@@ -276,7 +315,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(657, 415);
+            this.tabPage2.Size = new System.Drawing.Size(657, 431);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Генерация ключей";
             // 
@@ -464,7 +503,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(665, 441);
+            this.ClientSize = new System.Drawing.Size(665, 457);
             this.Controls.Add(this.tabs);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
@@ -474,6 +513,7 @@
             this.tabs.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.maxBlockSize)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
@@ -518,6 +558,9 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.NumericUpDown maxBlockSize;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label maxBlockSizeInfo;
     }
 }
 

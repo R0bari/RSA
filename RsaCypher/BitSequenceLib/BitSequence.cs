@@ -22,6 +22,14 @@ namespace RsaCypher.BitSequenceLib
                 this.Bits.AddRange(currentByte.Bits);
             }
         }
+        public BitSequence(int number)
+        {
+            while (number > 0)
+            {
+                this.Bits.Add(new Bit(number % 2 != 0));
+                number /= 2;
+            }
+        }
         public BitSequence (string line)
         {
             foreach (char symbol in line)
@@ -47,7 +55,7 @@ namespace RsaCypher.BitSequenceLib
         {
             this.Bits.AddRange(bits);
         }
-        public BitSequence(BigInteger bigNumber)
+            public BitSequence(BigInteger bigNumber)
         {
             while (bigNumber > 0)
             {
