@@ -165,7 +165,14 @@ namespace RsaCypher
             string[] encryptedBlocks = message.Trim().Split(' ');
             foreach (string block in encryptedBlocks)
             {
-                encryptedBigNumbers.Add(BigInteger.Parse(block));
+                try
+                {
+                    encryptedBigNumbers.Add(BigInteger.Parse(block));
+                }
+                catch
+                {
+                    throw new Exception("Wrong message format!");
+                }
                 BigInteger decryptedBigNumber = this.Decrypt(encryptedBigNumbers[encryptedBigNumbers.Count - 1]);
                 BitSequence decryptedBitSequence = new BitSequence(decryptedBigNumber);
                 decryptedMessage.Append(decryptedBitSequence.ToString());

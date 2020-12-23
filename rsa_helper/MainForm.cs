@@ -62,32 +62,15 @@ namespace rsa_helper
             }
         }
 
-        private void HandleSwitchProcessType(object sender, EventArgs e)
-        {
-            if (radioEncrypt.Checked)
-            {
-                processButton.Text = "Зашифровать";
-            }
-            else if (radioDecrypt.Checked)
-            {
-                processButton.Text = "Расшифровать";
-            }
-        }
-
         private void HandleClickProcessButton(object sender, EventArgs e)
         {
             if (firstKeyTextBox.Text == string.Empty || secondKeyTextBox.Text == string.Empty)
             {
                 return;
             }
-            if (radioEncrypt.Checked)
-            {
-                output.Text = _rsaCypher.EncyptByBlocks(input.Text, (int)maxBlockSize.Value);
-            }
-            else
-            {
-                output.Text = _rsaCypher.DecryptByBlocks(input.Text);
-            }
+            output.Text = _rsaCypher.EncyptByBlocks(input.Text, (int)maxBlockSize.Value);
+            encryptedText.Text = output.Text;
+            tabs.SelectedIndex = 0;
         }
 
         private void HandleClickHelp(object sender, EventArgs e)
@@ -154,6 +137,11 @@ namespace rsa_helper
             nTextBox.Text = _rsaCypher.SecondPartKey.ToString();
             eTextBox.Text = _rsaCypher.FirstPartOpenKey.ToString();
             dTextBox.Text = _rsaCypher.FirstPartClosedKey.ToString();
+            firstKeyTextBox.Text = eTextBox.Text;
+            secondKeyTextBox.Text = nTextBox.Text;
+            ChangeMaxBlockSize((int)Math.Sqrt(new BitSequence(_rsaCypher.SecondPartKey).Bits.Count) - 1);
+            EnableProcessButton();
+            tabs.SelectedIndex = 1;
         }
 
         private void ChangeMaxBlockSize(int maximum)
@@ -161,6 +149,23 @@ namespace rsa_helper
             maxBlockSizeInfo.Text = "Максимальный размер блока: " + maximum;
             maxBlockSize.Maximum = maximum;
             maxBlockSize.Value = maximum;
+        }
+
+        private void HandleClickDecryptButton(object sender, EventArgs e)
+        {
+            decryptedText.Text = _rsaCypher.DecryptByBlocks(encryptedText.Text);
+        }
+
+        private void HandleClickLoadFromFile(object sender, EventArgs e)
+        {
+            openFileDialog.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
+            if (openFileDialog.ShowDialog() == DialogResult.Cancel)
+            {
+                return;
+            }
+            string fileName = openFileDialog.FileName;
+            string fileText = System.IO.File.ReadAllText(fileName);
+            input.Text = fileText;
         }
     }
 }
